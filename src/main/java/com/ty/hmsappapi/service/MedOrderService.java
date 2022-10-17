@@ -11,7 +11,11 @@ import org.springframework.stereotype.Service;
 import com.ty.hmsappapi.dao.MedOrderDao;
 import com.ty.hmsappapi.dto.Item;
 import com.ty.hmsappapi.dto.MedOrder;
+<<<<<<< HEAD
 import com.ty.hmsappapi.exception.IdnotFoundException;
+=======
+import com.ty.hmsappapi.exception.IdNotFoundException;
+>>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
 import com.ty.hmsappapi.util.ResponseStructure;
 
 @Service
@@ -43,7 +47,11 @@ public class MedOrderService {
 			responseStructure.setData(medOrder);
 			return new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure, HttpStatus.OK);
 		} else {
+<<<<<<< HEAD
 			throw new IdnotFoundException("Enter id " + id + " does not exist");
+=======
+			throw new IdNotFoundException("Enter id " + id + " does not exist");
+>>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
 		}
 	}
 
@@ -66,7 +74,11 @@ public class MedOrderService {
 			responseStructure.setData(dao.deleteOrder(medOrder));
 			return new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.OK);
 		} else {
+<<<<<<< HEAD
 			throw new IdnotFoundException("Entered id " + id + " does not exist");
+=======
+			throw new IdNotFoundException("Entered id " + id + " does not exist");
+>>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
 		}
 	}
 
@@ -82,7 +94,11 @@ public class MedOrderService {
 			return new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
 		}
 		else {
+<<<<<<< HEAD
 			throw new IdnotFoundException();
+=======
+			throw new IdNotFoundException();
+>>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
 		}
 	}
 }

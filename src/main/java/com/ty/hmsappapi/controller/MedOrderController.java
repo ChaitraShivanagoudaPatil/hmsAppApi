@@ -17,7 +17,10 @@ import com.ty.hmsappapi.dto.MedOrder;
 import com.ty.hmsappapi.service.MedOrderService;
 import com.ty.hmsappapi.util.ResponseStructure;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
 @RestController
 public class MedOrderController {
 	@Autowired

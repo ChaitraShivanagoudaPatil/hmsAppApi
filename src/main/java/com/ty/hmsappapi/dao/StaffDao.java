@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ty.hmsappapi.dto.Staff;
+<<<<<<< HEAD
 import com.ty.hmsappapi.repository.StaffRepository;
+=======
+import com.ty.hmsappapi.respository.StaffRepository;
+>>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
 @Repository
 public class StaffDao {
 	
