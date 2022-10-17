@@ -18,44 +18,40 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.ty.hmsappapi.util.ResponseStructure;
 
 @ControllerAdvice
-public class ExceptionController extends ResponseEntityExceptionHandler {
-	
+public class ExceptionController extends ResponseEntityExceptionHandler{
+
 	@ExceptionHandler(IdnotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> handleIdNotFoundException(IdnotFoundException exception){
-		ResponseStructure<String> responseStructure = new ResponseStructure<String>();
+		ResponseStructure<String> responseStructure =new ResponseStructure<String>();
 		responseStructure.setStatus(HttpStatus.NOT_FOUND.value());
-		responseStructure.setMessage("ID NOT FOUND");
+		responseStructure.setMessage("Id not found");
 		responseStructure.setData(exception.getMessage());
-		return new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ResponseStructure<String>>(responseStructure,HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(InvalidCredentialsException.class)
-	public ResponseEntity<ResponseStructure<String>> handleInvalidCredentialsException(InvalidCredentialsException exception){
-		ResponseStructure<String> responseStructure = new ResponseStructure<String>();
+	public ResponseEntity<ResponseStructure<String>> handleInvalidCredentialException(InvalidCredentialsException exception){
+		ResponseStructure<String> responseStructure =new ResponseStructure<String>();
 		responseStructure.setStatus(HttpStatus.NOT_FOUND.value());
-		responseStructure.setMessage("INVALID CREDENTIALS");
+		responseStructure.setMessage("In valid credentail");
 		responseStructure.setData(exception.getMessage());
-		return new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.NOT_FOUND);
-	}
-
-	
+		return new ResponseEntity<ResponseStructure<String>>(responseStructure,HttpStatus.NOT_FOUND);
+}
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		
-		List<ObjectError> ref = ex.getAllErrors();
-		Map<String, String> errors = new LinkedHashMap<String, String>();
-		for(ObjectError error : ref) {
-			String message = error.getDefaultMessage();
-			String field = ((FieldError)error).getField();
-			errors.put(field, message);
+		List<ObjectError> ref= ex.getAllErrors();
+		Map<String,String> errors=new LinkedHashMap<String, String>();
+		for(ObjectError error:ref) {
+			String message=error.getDefaultMessage();
+			String field=((FieldError) error).getField();
+			errors.put(field,message);
 		}
-		ResponseStructure<Map<String, String>> responseStructure = new ResponseStructure<Map<String, String>>();
+		ResponseStructure<Map<String,String>> responseStructure=new ResponseStructure<Map<String,String>>();
 		responseStructure.setStatus(HttpStatus.BAD_REQUEST.value());
 		responseStructure.setMessage(HttpStatus.BAD_REQUEST.name());
 		responseStructure.setData(errors);
-		return new ResponseEntity<Object>(responseStructure, HttpStatus.BAD_REQUEST);
-	}
+		return new ResponseEntity<Object>(responseStructure,HttpStatus.BAD_REQUEST);
 	
 }
-
+}
