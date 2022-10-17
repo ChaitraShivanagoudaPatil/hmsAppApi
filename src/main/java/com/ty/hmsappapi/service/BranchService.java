@@ -69,11 +69,18 @@ public class BranchService {
 	   }
 	}
     
-    public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(){
-        ResponseStructure<List<Branch>> responseStructure= new ResponseStructure<List<Branch>>();
-        responseStructure.setStatus(HttpStatus.OK.value());
-        responseStructure.setMessage("SUCESSFULL");
-        responseStructure.setData(branchDao.getAllBranch());
-        return new ResponseEntity<ResponseStructure<List<Branch>>>(responseStructure,HttpStatus.OK);
+//    public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(){
+//        ResponseStructure<List<Branch>> responseStructure= new ResponseStructure<List<Branch>>();
+//        responseStructure.setStatus(HttpStatus.OK.value());
+//        responseStructure.setMessage("SUCESSFULL");
+//        responseStructure.setData(branchDao.getAllBranch());
+//        return new ResponseEntity<ResponseStructure<List<Branch>>>(responseStructure,HttpStatus.OK);
+//    }
+    public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranches(int id){
+    	 ResponseStructure<List<Branch>> responseStructure= new ResponseStructure<List<Branch>>();
+         responseStructure.setStatus(HttpStatus.OK.value());
+         responseStructure.setMessage("SUCESSFULL");
+         responseStructure.setData(branchDao.getAllBranchs(id));
+         return new ResponseEntity<ResponseStructure<List<Branch>>>(responseStructure,HttpStatus.OK);
     }
 }

@@ -1,13 +1,13 @@
 package com.ty.hmsappapi.exception;
 
-public class InvalidCredentialsException extends RuntimeException{
-	private String message="Invalid Credential";
+import lombok.Data;
 
-	public String getMessage() {
-		return message;
-	}
+@Data
+public class InvalidCredentialsException extends RuntimeException{
+	String message = "Given credentials are invalid";
+
 	public InvalidCredentialsException(String message) {
-		super();
+
 		this.message = message;
 	}
 
@@ -15,3 +15,4 @@ public class InvalidCredentialsException extends RuntimeException{
 		super();
 	}
 }
+		

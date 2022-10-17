@@ -33,17 +33,21 @@ public class BranchController {
 	public ResponseEntity<ResponseStructure<Branch>> getBranch(@PathVariable int id){
 		return branchService.getBranch(id);
 	}
-	@DeleteMapping("/branchss")
+	@DeleteMapping("/branchs")
 	public ResponseEntity<ResponseStructure<String>> deleteBranch(@RequestParam int id){
 		return branchService.deleteBranch(id);
 	}
-	@GetMapping("/branchs")
-	public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(){
-		return branchService.getAllBranch();
-	}
-	
+//	@GetMapping("/branchs")
+//	public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(){
+//		return branchService.getAllBranch();
+//	}
+//	
 	@PutMapping("/branchs")
 	public ResponseEntity<ResponseStructure<Branch>> updateHospital(@RequestParam int id,@RequestBody Branch branch){
 		return branchService.updateBranch(id, branch);
 	}
+	@GetMapping("/branchs")
+	public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(@RequestParam int id){
+		return branchService.getAllBranches(id);
+}
 }

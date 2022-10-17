@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class ApplicationConfig {
-	
+
 	public Docket getDocket() {
 		Contact contact = new Contact("testyantra", "www.testyantra.com", "testyantra@mail.com");
 		@SuppressWarnings("rawtypes")
@@ -29,6 +29,6 @@ public class ApplicationConfig {
 				.useDefaultResponseMessages(false);
 
 	}
-	
+
 
 }

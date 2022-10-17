@@ -52,6 +52,6 @@ public class ExceptionController extends ResponseEntityExceptionHandler{
 		responseStructure.setMessage(HttpStatus.BAD_REQUEST.name());
 		responseStructure.setData(errors);
 		return new ResponseEntity<Object>(responseStructure,HttpStatus.BAD_REQUEST);
-	}
-
+	
+}
 }

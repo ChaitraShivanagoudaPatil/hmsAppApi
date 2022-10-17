@@ -1,15 +1,18 @@
 package com.ty.hmsappapi.exception;
 
-public class IdnotFoundException extends RuntimeException {
-	private String message="Given id doesnt exist";
 
-	public String getMessage() {
-		return message;
-	}
-	public IdnotFoundException() {
-		
-	}
+import lombok.Data;
+
+@Data
+public class IdnotFoundException extends RuntimeException{
+	String message ="Given ID is not exist";
+
 	public IdnotFoundException(String message) {
 		this.message = message;
 	}
+
+	public IdnotFoundException() {
+	}
+		
 }
+
