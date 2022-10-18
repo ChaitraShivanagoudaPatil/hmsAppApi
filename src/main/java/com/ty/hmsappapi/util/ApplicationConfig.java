@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
-
-
-
-
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -25,8 +21,8 @@ public class ApplicationConfig {
 		@SuppressWarnings("rawtypes")
 		List<VendorExtension> extensions = new ArrayList<VendorExtension>();
 
-
 				ApiInfo apiInfo = new ApiInfo("Hospital", "This App is to manage hospital", "1.0", "www.testyantra.com",
+
 				contact, "Apache-Tomcat-9.0", "www.testyantra.global.com", extensions);
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("com.ty.HospitalManagementSystem")).build().apiInfo(apiInfo)

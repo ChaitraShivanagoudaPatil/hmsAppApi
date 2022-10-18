@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ty.hmsappapi.dao.BranchDao;
 import com.ty.hmsappapi.dto.Branch;
+import com.ty.hmsappapi.dto.Encounter;
 import com.ty.hmsappapi.exception.IdnotFoundException;
 import com.ty.hmsappapi.repository.BranchRepository;
 import com.ty.hmsappapi.repository.HospitalRepository;
@@ -50,6 +52,7 @@ public class BranchService {
 			return new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.OK);
 		} else {
 			throw new IdnotFoundException("Id " + id + " doesn't exist");
+
 		}
 	}
 
@@ -70,6 +73,19 @@ public class BranchService {
 		}
 	}
 
+
+	
+
+	public ResponseEntity<ResponseStructure<List<Encounter>>> getAllEncounterByBranchId(int bid) {
+		Branch branch = branchDao.getBranch(bid);
+		List<Encounter> list=branch.getEncounter();
+		ResponseStructure<List<Encounter>> responseStructure = new ResponseStructure<List<Encounter>>();
+		responseStructure.setStatus(HttpStatus.OK.value());
+		responseStructure.setMessage("SUCCESS");
+		responseStructure.setData(list);
+		return new ResponseEntity<>(responseStructure, HttpStatus.OK);
+	}
+	
 //    public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(){
 //        ResponseStructure<List<Branch>> responseStructure= new ResponseStructure<List<Branch>>();
 //        responseStructure.setStatus(HttpStatus.OK.value());
@@ -77,11 +93,11 @@ public class BranchService {
 //        responseStructure.setData(branchDao.getAllBranch());
 //        return new ResponseEntity<ResponseStructure<List<Branch>>>(responseStructure,HttpStatus.OK);
 //    }
-//    public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranches(int id){
-//    	 ResponseStructure<List<Branch>> responseStructure= new ResponseStructure<List<Branch>>();
-//         responseStructure.setStatus(HttpStatus.OK.value());
-//         responseStructure.setMessage("SUCESSFULL");
-//         responseStructure.setData(branchDao.getAllBranchs(id));
-//         return new ResponseEntity<ResponseStructure<List<Branch>>>(responseStructure,HttpStatus.OK);
-//    }
+    public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranches(int id){
+    	 ResponseStructure<List<Branch>> responseStructure= new ResponseStructure<List<Branch>>();
+         responseStructure.setStatus(HttpStatus.OK.value());
+         responseStructure.setMessage("SUCESSFULL");
+         responseStructure.setData(branchDao.getAllBranchs(id));
+         return new ResponseEntity<ResponseStructure<List<Branch>>>(responseStructure,HttpStatus.OK);
+    }
 }

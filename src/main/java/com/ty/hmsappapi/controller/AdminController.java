@@ -19,32 +19,76 @@ import com.ty.hmsappapi.dto.Admin;
 import com.ty.hmsappapi.service.AdminService;
 import com.ty.hmsappapi.util.ResponseStructure;
 
-
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 @RequestMapping("/admins")
 @RestController
 public class AdminController {
 	@Autowired
 	AdminService adminService;
+	@ApiOperation(value = "save admin", notes = "This API is used to save admin")
+    @ApiResponses(value= {@ApiResponse(code=200,message="successfull"),
+    	    @ApiResponse(code=400,message="SUCCESSFULL"),
+    	    @ApiResponse(code=401,message="NOT AUTHORISED"),
+    	    @ApiResponse(code=403,message="ACCESS FORBIDDEN"),
+    	    @ApiResponse(code=404,message="GIVEN ID NOT FOUND"),
+    	    @ApiResponse(code=405,message="METHOD NOT SUPPORTED")})
 	@PostMapping()
 	public ResponseEntity<ResponseStructure<Admin>> saveAdmin(@Validated@RequestBody Admin admin){
 		return adminService.saveAdmin(admin);
 	}
+	@ApiOperation(value = "get admin", notes = "This API is used to get admin")
+	@ApiResponses(value= {@ApiResponse(code=200,message="successfull"),
+    	    @ApiResponse(code=400,message="SUCCESSFULL"),
+    	    @ApiResponse(code=401,message="NOT AUTHORISED"),
+    	    @ApiResponse(code=403,message="ACCESS FORBIDDEN"),
+    	    @ApiResponse(code=404,message="GIVEN ID NOT FOUND"),
+    	    @ApiResponse(code=405,message="METHOD NOT SUPPORTED")})
 	@GetMapping("/{id}")
 	public ResponseEntity<ResponseStructure<Admin>> getAdmin(@RequestParam int id){
 		return adminService.getAdmin(id);
 	}
+	@ApiOperation(value = "delete admin", notes = "This API is used to delete admin")
+	@ApiResponses(value= {@ApiResponse(code=200,message="successfull"),
+    	    @ApiResponse(code=400,message="SUCCESSFULL"),
+    	    @ApiResponse(code=401,message="NOT AUTHORISED"),
+    	    @ApiResponse(code=403,message="ACCESS FORBIDDEN"),
+    	    @ApiResponse(code=404,message="GIVEN ID NOT FOUND"),
+    	    @ApiResponse(code=405,message="METHOD NOT SUPPORTED")})
 	@DeleteMapping()
 	public ResponseEntity<ResponseStructure<String>> deleteAdmin(int id){
 		return adminService.deleteAdmin(id);
 	}
+	@ApiOperation(value = "update admin", notes = "This API is used to update admin")
+	@ApiResponses(value= {@ApiResponse(code=200,message="successfull"),
+    	    @ApiResponse(code=400,message="SUCCESSFULL"),
+    	    @ApiResponse(code=401,message="NOT AUTHORISED"),
+    	    @ApiResponse(code=403,message="ACCESS FORBIDDEN"),
+    	    @ApiResponse(code=404,message="GIVEN ID NOT FOUND"),
+    	    @ApiResponse(code=405,message="METHOD NOT SUPPORTED")})
 	@PutMapping()
 	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(@RequestParam int id,@Validated@RequestBody Admin admin){
 		return adminService.updateAdmin(id, admin);
 	}
+	@ApiOperation(value = "list of admin", notes = "This API is used to list of admin")
+	@ApiResponses(value= {@ApiResponse(code=200,message="successfull"),
+    	    @ApiResponse(code=400,message="SUCCESSFULL"),
+    	    @ApiResponse(code=401,message="NOT AUTHORISED"),
+    	    @ApiResponse(code=403,message="ACCESS FORBIDDEN"),
+    	    @ApiResponse(code=404,message="GIVEN ID NOT FOUND"),
+    	    @ApiResponse(code=405,message="METHOD NOT SUPPORTED")})
 	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<Admin>>> getAllAdmin(){
 		return adminService.getAllAdmin();
 	}
+	@ApiOperation(value = "validate admin", notes = "This API is used to validate admin")
+	@ApiResponses(value= {@ApiResponse(code=200,message="successfull"),
+    	    @ApiResponse(code=400,message="SUCCESSFULL"),
+    	    @ApiResponse(code=401,message="NOT AUTHORISED"),
+    	    @ApiResponse(code=403,message="ACCESS FORBIDDEN"),
+    	    @ApiResponse(code=404,message="GIVEN ID NOT FOUND"),
+    	    @ApiResponse(code=405,message="METHOD NOT SUPPORTED")})
 	@PostMapping("/login")
 	public ResponseEntity<ResponseStructure<Admin>> validateUser(@RequestBody Login login){
 		return adminService.validateAdmin(login);

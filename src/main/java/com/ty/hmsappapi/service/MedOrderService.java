@@ -8,19 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.ty.hmsappapi.dao.EncounterDao;
 import com.ty.hmsappapi.dao.MedOrderDao;
+import com.ty.hmsappapi.dto.Encounter;
 import com.ty.hmsappapi.dto.Item;
 import com.ty.hmsappapi.dto.MedOrder;
-
 import com.ty.hmsappapi.exception.IdnotFoundException;
-
 import com.ty.hmsappapi.util.ResponseStructure;
 
 @Service
 public class MedOrderService {
 	@Autowired
 	MedOrderDao dao;
-
+	@Autowired
+    EncounterDao encounterDao; 
 	public ResponseEntity<ResponseStructure<MedOrder>> saveMedOrder(MedOrder medOrder) {
 		List<Item> list=medOrder.getList();
 		double sum=0;
@@ -45,9 +46,7 @@ public class MedOrderService {
 			responseStructure.setData(medOrder);
 			return new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure, HttpStatus.OK);
 		} else {
-
 			throw new IdnotFoundException("Enter id " + id + " does not exist");
-
 		}
 	}
 
@@ -72,7 +71,6 @@ public class MedOrderService {
 		} else {
 
 			throw new IdnotFoundException("Entered id " + id + " does not exist");
-
 		}
 	}
 
@@ -88,9 +86,7 @@ public class MedOrderService {
 			return new ResponseEntity<ResponseStructure<MedOrder>>(responseStructure,HttpStatus.OK);
 		}
 		else {
-
 			throw new IdnotFoundException();
-
 		}
 	}
 }

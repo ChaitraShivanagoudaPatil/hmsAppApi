@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.ty.hmsappapi.dto.MedOrder;
 import com.ty.hmsappapi.repository.MedOrderRepository;
 
-
 @Repository
 public class MedOrderDao {
 	

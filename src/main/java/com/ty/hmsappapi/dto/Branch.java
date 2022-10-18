@@ -26,7 +26,7 @@ public class Branch {
 	@JoinColumn
 	@JsonIgnore
 	Hospital hospital;
-    @OneToMany
+    @OneToMany(mappedBy = "branch")
 	List<Encounter> encounter;
 
 }

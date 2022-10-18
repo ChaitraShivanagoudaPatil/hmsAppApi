@@ -49,8 +49,8 @@ public class BranchDao {
 		return null;
 	}
 
-//	public List<Branch> getAllBranchs(int id) {
-//		return branchRepository.getAllBranch(id);
-//	}
+	public List<Branch> getAllBranchs(int id) {
+		return branchRepository.getAllBranch(id);
+	}
 
 }

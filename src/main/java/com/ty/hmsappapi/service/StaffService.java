@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.ty.hmsappapi.dao.StaffDao;
 import com.ty.hmsappapi.dto.Login;
 import com.ty.hmsappapi.dto.Staff;
-
 import com.ty.hmsappapi.exception.IdnotFoundException;
 import com.ty.hmsappapi.exception.InvalidCredentialsException;
 import com.ty.hmsappapi.util.ResponseStructure;
@@ -44,6 +43,7 @@ public class StaffService {
 
 			throw new IdnotFoundException("Enter id " + id + " does not exist");
 
+
 		}
 	}
 
@@ -66,9 +66,7 @@ public class StaffService {
 			responseStructure.setData(dao.deleteOrder(staff));
 			return new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.OK);
 		} else {
-
 			throw new IdnotFoundException("Entered id " + id + " does not exist");
-
 		}
 	}
 
