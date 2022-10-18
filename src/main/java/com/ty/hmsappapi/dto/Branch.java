@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 @Entity
 @Data
@@ -22,6 +24,7 @@ public class Branch {
 	private long phone;
 	@ManyToOne
 	@JoinColumn
+	@JsonIgnore
 	Hospital hospital;
     @OneToMany
 	List<Encounter> encounter;

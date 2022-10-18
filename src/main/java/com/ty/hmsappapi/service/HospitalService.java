@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ty.hmsappapi.dao.HospitalDao;
+import com.ty.hmsappapi.dto.Branch;
 import com.ty.hmsappapi.dto.Hospital;
 import com.ty.hmsappapi.exception.IdnotFoundException;
 import com.ty.hmsappapi.repository.HospitalRepository;
@@ -22,6 +23,11 @@ public class HospitalService {
 	@Autowired
 	HospitalRepository hospitalRepository;
 	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(Hospital hospital){
+		List<Branch> list=hospital.getBranch();
+		hospital.setBranch(list);
+		for(Branch branch:list) {
+			branch.setHospital(hospital);
+		}
 		ResponseStructure<Hospital> responseStructure=new ResponseStructure<Hospital>();
 		responseStructure.setStatus(HttpStatus.CREATED.value());
 		responseStructure.setMessage("SUCESSFULLY CREATED");
@@ -53,10 +59,10 @@ public class HospitalService {
 		}
 	}
 	public ResponseEntity<ResponseStructure<Hospital>> updateHospital(int id,Hospital hospital){
-		Optional<Hospital> opt=hospitalRepository.findById(id);
+		Hospital opt=hospitalDao.getHospital(id);
 	   ResponseStructure<Hospital> responseStructure=new ResponseStructure<Hospital>();
-	   if(opt.isPresent()) {
-		   Hospital ref=opt.get();
+	   if(opt!=null) {
+		   Hospital ref=opt;
 		   ref.setName(hospital.getName());
 		   ref.setWebsite(hospital.getWebsite());
 		   responseStructure.setStatus(HttpStatus.OK.value());

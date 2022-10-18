@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,32 +20,32 @@ import com.ty.hmsappapi.service.AdminService;
 import com.ty.hmsappapi.util.ResponseStructure;
 
 
-
+@RequestMapping("/admins")
 @RestController
 public class AdminController {
 	@Autowired
 	AdminService adminService;
-	@PostMapping("/admins")
+	@PostMapping()
 	public ResponseEntity<ResponseStructure<Admin>> saveAdmin(@Validated@RequestBody Admin admin){
 		return adminService.saveAdmin(admin);
 	}
-	@GetMapping("/admins/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<ResponseStructure<Admin>> getAdmin(@RequestParam int id){
 		return adminService.getAdmin(id);
 	}
-	@DeleteMapping("/admins")
+	@DeleteMapping()
 	public ResponseEntity<ResponseStructure<String>> deleteAdmin(int id){
 		return adminService.deleteAdmin(id);
 	}
-	@PutMapping("/admins")
+	@PutMapping()
 	public ResponseEntity<ResponseStructure<Admin>> updateAdmin(@RequestParam int id,@Validated@RequestBody Admin admin){
 		return adminService.updateAdmin(id, admin);
 	}
-	@GetMapping("/admins")
+	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<Admin>>> getAllAdmin(){
 		return adminService.getAllAdmin();
 	}
-	@PostMapping("/admins/login")
+	@PostMapping("/login")
 	public ResponseEntity<ResponseStructure<Admin>> validateUser(@RequestBody Login login){
 		return adminService.validateAdmin(login);
 		

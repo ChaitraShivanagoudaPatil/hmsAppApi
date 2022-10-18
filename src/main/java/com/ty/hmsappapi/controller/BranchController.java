@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,22 +19,22 @@ import com.ty.hmsappapi.service.BranchService;
 import com.ty.hmsappapi.util.ResponseStructure;
 
 
-
+@RequestMapping("/branchs")
 @RestController
 public class BranchController {
     @Autowired
 	BranchService branchService;
     
 
-	@PostMapping("/branchs")
+	@PostMapping()
 	public ResponseEntity<ResponseStructure<Branch>> saveBranch(@RequestBody Branch branch){
 		return branchService.saveBranch(branch);
 	}
-	@GetMapping("/branchs/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<ResponseStructure<Branch>> getBranch(@PathVariable int id){
 		return branchService.getBranch(id);
 	}
-	@DeleteMapping("/branchs")
+	@DeleteMapping()
 	public ResponseEntity<ResponseStructure<String>> deleteBranch(@RequestParam int id){
 		return branchService.deleteBranch(id);
 	}
@@ -42,12 +43,12 @@ public class BranchController {
 //		return branchService.getAllBranch();
 //	}
 //	
-	@PutMapping("/branchs")
+	@PutMapping()
 	public ResponseEntity<ResponseStructure<Branch>> updateHospital(@RequestParam int id,@RequestBody Branch branch){
 		return branchService.updateBranch(id, branch);
 	}
-	@GetMapping("/branchs")
-	public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(@RequestParam int id){
-		return branchService.getAllBranches(id);
-}
+//	@GetMapping("/branchs")
+//	public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranch(@RequestParam int id){
+//		return branchService.getAllBranches(id);
+//}
 }

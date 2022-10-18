@@ -1,12 +1,12 @@
 package com.ty.hmsappapi.exception;
 
-public class IdNotFoundException extends RuntimeException{
+public class IdnotFoundException extends RuntimeException{
 		private String message="Id does not exist";
 
 		
-		public IdNotFoundException() {
+		public IdnotFoundException() {
 		}
-		public IdNotFoundException(String message) {
+		public IdnotFoundException(String message) {
 			this.message = message;
 		}
 		@Override
