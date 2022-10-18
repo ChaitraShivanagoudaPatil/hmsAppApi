@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.ty.hmsappapi.dao.BranchManagerDao;
 import com.ty.hmsappapi.dto.BranchManager;
 import com.ty.hmsappapi.dto.Login;
-import com.ty.hmsappapi.exception.IdnotFoundException;
+import com.ty.hmsappapi.exception.IdNotFoundException;
 import com.ty.hmsappapi.exception.InvalidCredentialsException;
 import com.ty.hmsappapi.repository.BranchManagerRepository;
 import com.ty.hmsappapi.util.ResponseStructure;
@@ -51,7 +51,7 @@ public class BranchManagerService {
 			responseStructure.setData(dao.saveBranchManager(res));
 			return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 		} else {
-			throw new IdnotFoundException();
+			throw new IdNotFoundException();
 		}
 
 	}

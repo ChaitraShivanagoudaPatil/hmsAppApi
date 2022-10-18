@@ -23,7 +23,7 @@ public class Branch {
 	@ManyToOne
 	@JoinColumn
 	Hospital hospital;
-    @OneToMany
+    @OneToMany(mappedBy = "branch")
 	List<Encounter> encounter;
 
 }

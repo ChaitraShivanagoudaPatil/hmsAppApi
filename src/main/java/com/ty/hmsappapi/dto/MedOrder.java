@@ -24,5 +24,5 @@ public class MedOrder {
 	private double totalCost;
 	@OneToMany
 	private List<Item> list;
-		
+	
 }

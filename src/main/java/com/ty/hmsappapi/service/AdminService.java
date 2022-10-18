@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.ty.hmsappapi.dao.AdminDao;
 import com.ty.hmsappapi.dao.Login;
 import com.ty.hmsappapi.dto.Admin;
-import com.ty.hmsappapi.exception.IdnotFoundException;
+import com.ty.hmsappapi.exception.IdNotFoundException;
 import com.ty.hmsappapi.exception.InvalidCredentialsException;
 import com.ty.hmsappapi.repository.AdminRepository;
 import com.ty.hmsappapi.util.ResponseStructure;
@@ -39,7 +39,7 @@ public class AdminService {
 			return new ResponseEntity<ResponseStructure<Admin>>(responseStructure,HttpStatus.OK);
 		}
 		else {
-			throw new IdnotFoundException("Id "+id+" doesn't exist");
+			throw new IdNotFoundException("Id "+id+" doesn't exist");
 		}
 		
 	}
@@ -59,7 +59,7 @@ public class AdminService {
 			return new ResponseEntity<ResponseStructure<Admin>>(responseStructure,HttpStatus.OK);
 		}
 		else {
-			throw new IdnotFoundException("Id "+id+" doesn't exist");
+			throw new IdNotFoundException("Id "+id+" doesn't exist");
 		}
 	}
 	public ResponseEntity<ResponseStructure<String>> deleteAdmin(int id){
@@ -70,7 +70,7 @@ public class AdminService {
 			responseStructure.setData(adminDao.deleteAdmin(id));
 			return new ResponseEntity<ResponseStructure<String>>(responseStructure,HttpStatus.OK);
 		}else {
-			throw new IdnotFoundException("Id "+id+" doesn't exist");
+			throw new IdNotFoundException("Id "+id+" doesn't exist");
 		}
 	}
 	

@@ -10,39 +10,45 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ty.hmsappapi.dto.Branch;
 import com.ty.hmsappapi.dto.Hospital;
 import com.ty.hmsappapi.service.HospitalService;
 import com.ty.hmsappapi.util.ResponseStructure;
 
-
+@RequestMapping("/hospitals")
 @RestController
 public class HospitalController {
 	@Autowired
 	HospitalService hospitalService;
 	
-	@PostMapping("/hospitls")
+	@PostMapping()
 	public ResponseEntity<ResponseStructure<Hospital>> saveHospital(@RequestBody Hospital hospital){
 		return hospitalService.saveHospital(hospital);
 	}
-	@GetMapping("/hospitals/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<ResponseStructure<Hospital>> getHospital(@PathVariable int id){
 		return hospitalService.getHospital(id);
 	}
-	@DeleteMapping("/hospitals")
+	@DeleteMapping()
 	public ResponseEntity<ResponseStructure<String>> deleteHospital(@RequestParam int id){
 		return hospitalService.deleteHospital(id);
 	}
-	@GetMapping("/hospitals")
+	@GetMapping()
 	public ResponseEntity<ResponseStructure<List<Hospital>>> getAllHospital(){
 		return hospitalService.getAllHospital();
 	}
 	
-	@PutMapping("/hospitals")
+	@PutMapping()
 	public ResponseEntity<ResponseStructure<Hospital>> updateHospital(@RequestParam int id,@RequestBody Hospital hospital){
 		return hospitalService.updateHospital(id, hospital);
 	}
-
+	@GetMapping("/{id}/branchs")
+	public ResponseEntity<ResponseStructure<List<Branch>>> getAllBranchByHospitalId(@PathVariable int hid){
+		return hospitalService.getAllBranchByHospitalId(hid);
+	}
+	
 }

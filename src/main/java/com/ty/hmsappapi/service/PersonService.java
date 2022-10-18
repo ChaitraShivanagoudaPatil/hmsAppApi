@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.ty.hmsappapi.dao.PersonDao;
 import com.ty.hmsappapi.dto.Person;
-import com.ty.hmsappapi.exception.IdnotFoundException;
+import com.ty.hmsappapi.exception.IdNotFoundException;
 import com.ty.hmsappapi.repository.PersonRepository;
 import com.ty.hmsappapi.util.ResponseStructure;
 
@@ -49,7 +49,7 @@ public class PersonService {
 			responseStructure.setData(dao.savePerson(res));
 			return new ResponseEntity<>(responseStructure, HttpStatus.OK);
 		} else {
-			throw new IdnotFoundException();
+			throw new IdNotFoundException();
 		}
 
 	}

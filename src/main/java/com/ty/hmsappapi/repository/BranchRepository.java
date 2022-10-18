@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.ty.hmsappapi.dto.Branch;
 
-
-
 public interface BranchRepository extends JpaRepository<Branch, Integer> {
-@Query(value="SELECT b FROM Branch b WHERE b.hospital.id=1?")
- public List<Branch> getAllBranch(int id);
+	@Query(value = "SELECT b FROM Branch b WHERE b.hospital.id=id")
+	public List<Branch> getAllBranch(int id);
 }
