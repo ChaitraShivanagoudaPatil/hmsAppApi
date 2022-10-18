@@ -20,8 +20,8 @@ import com.ty.hmsappapi.util.ResponseStructure;
 @ControllerAdvice
 public class ExceptionController extends ResponseEntityExceptionHandler{
 
-	@ExceptionHandler(IdnotFoundException.class)
-	public ResponseEntity<ResponseStructure<String>> handleIdNotFoundException(IdnotFoundException exception){
+	@ExceptionHandler(IdNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> handleIdNotFoundException(IdNotFoundException exception){
 		ResponseStructure<String> responseStructure =new ResponseStructure<String>();
 		responseStructure.setStatus(HttpStatus.NOT_FOUND.value());
 		responseStructure.setMessage("Id not found");

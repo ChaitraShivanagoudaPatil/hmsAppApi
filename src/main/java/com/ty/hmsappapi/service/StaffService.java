@@ -11,11 +11,9 @@ import org.springframework.stereotype.Service;
 import com.ty.hmsappapi.dao.StaffDao;
 import com.ty.hmsappapi.dto.Login;
 import com.ty.hmsappapi.dto.Staff;
-<<<<<<< HEAD
-import com.ty.hmsappapi.exception.IdnotFoundException;
-=======
+
 import com.ty.hmsappapi.exception.IdNotFoundException;
->>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
+
 import com.ty.hmsappapi.exception.InvalidCredentialsException;
 import com.ty.hmsappapi.util.ResponseStructure;
 
@@ -44,11 +42,9 @@ public class StaffService {
 			responseStructure.setData(staff);
 			return new ResponseEntity<ResponseStructure<Staff>>(responseStructure, HttpStatus.OK);
 		} else {
-<<<<<<< HEAD
-			throw new IdnotFoundException("Enter id " + id + " does not exist");
-=======
+
 			throw new IdNotFoundException("Enter id " + id + " does not exist");
->>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
+
 		}
 	}
 
@@ -71,11 +67,9 @@ public class StaffService {
 			responseStructure.setData(dao.deleteOrder(staff));
 			return new ResponseEntity<ResponseStructure<String>>(responseStructure, HttpStatus.OK);
 		} else {
-<<<<<<< HEAD
-			throw new IdnotFoundException("Entered id " + id + " does not exist");
-=======
+
 			throw new IdNotFoundException("Entered id " + id + " does not exist");
->>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
+
 		}
 	}
 
@@ -94,11 +88,9 @@ public class StaffService {
 			return new ResponseEntity<ResponseStructure<Staff>>(responseStructure,HttpStatus.OK);
 		}
 		else {
-<<<<<<< HEAD
-			throw new IdnotFoundException();
-=======
+
 			throw new IdNotFoundException();
->>>>>>> debf1168d5ecb33f6635b84d5afbb1cedf272602
+
 		}
 	}
 	public ResponseEntity<ResponseStructure<Staff>> validationByEmailAndPassword(Login login) {
